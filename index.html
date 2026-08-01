@@ -491,11 +491,29 @@
   }
   .prog-card:hover{transform:translateY(-8px); box-shadow:0 30px 60px -30px rgba(50,19,41,.3);}
   .prog-card .tag{
-    font-size:11.5px; letter-spacing:.14em; text-transform:uppercase; font-weight:700; color:var(--gold);
+    font-size:11px; letter-spacing:.1em; text-transform:uppercase; font-weight:700; color:var(--gold);
     margin-bottom:18px; display:block;
   }
   .prog-card h3{font-size:24px; margin-bottom:16px;}
-  .prog-card p{font-size:14.5px; margin-bottom:24px;}
+  .prog-card p{font-size:14.5px; margin-bottom:22px;}
+  .prog-card .price{
+    font-family:var(--serif);
+    font-size:26px;
+    color:var(--wine);
+    font-weight:600;
+    margin-bottom:22px;
+    padding-top:18px;
+    border-top:1px solid rgba(100,27,53,.14);
+  }
+  .prog-card .price span{
+    font-family:var(--sans);
+    font-size:12px;
+    font-weight:700;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    color:#8a7f85;
+    margin-left:4px;
+  }
   .prog-card .discover{
     font-size:12px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--wine);
   }
@@ -531,6 +549,30 @@
     padding:26px 24px 20px;
     background:linear-gradient(0deg, rgba(24,23,25,.72), transparent);
     color:var(--ivory); font-size:13px; letter-spacing:.03em;
+  }
+
+  .mosaic{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+    margin-top:20px;
+  }
+  .mosaic-item{
+    position:relative;
+    border-radius:4px;
+    overflow:hidden;
+    aspect-ratio:4/3.1;
+  }
+  .mosaic-item img{
+    width:100%; height:100%; object-fit:cover;
+    transition:transform .6s var(--ease);
+  }
+  .mosaic-item:hover img{transform:scale(1.06);}
+  .mosaic-item .caption{
+    position:absolute; left:0; right:0; bottom:0;
+    padding:20px 18px 16px;
+    background:linear-gradient(0deg, rgba(24,23,25,.78), transparent);
+    color:var(--ivory); font-size:12.5px; line-height:1.4; letter-spacing:.02em;
   }
 
   /* ---- Section 9: Testimonials ---- */
@@ -736,6 +778,7 @@
     .auth-grid{grid-template-columns:repeat(2,1fr);}
     .gallery{grid-template-columns:1fr;}
     .gallery .main-img{min-height:320px;}
+    .mosaic{grid-template-columns:repeat(2,1fr);}
     .contact-grid{grid-template-columns:1fr;}
     .social-inner{grid-template-columns:1fr;}
   }
@@ -751,6 +794,7 @@
     .section-pad{padding:80px 0;}
     .section-pad-sm{padding:60px 0;}
     .exp-grid, .prog-grid, .test-grid, .auth-grid{grid-template-columns:1fr;}
+    .mosaic{grid-template-columns:1fr;}
     .form-row{grid-template-columns:1fr;}
     form{padding:30px 24px;}
     .footer-grid{grid-template-columns:1fr 1fr; gap:36px;}
@@ -966,21 +1010,24 @@
     </div>
     <div class="prog-grid">
       <div class="prog-card reveal">
-        <span class="tag">Individuel</span>
-        <h3>Coaching individuel</h3>
-        <p>Clarté, confiance et transformation personnelle pour avancer vers ce qui compte pour vous.</p>
+        <span class="tag">Ados &amp; Adultes · 12-16 / 17-25 ans</span>
+        <h3>Programme d'éducation continue</h3>
+        <p>Développement personnel adapté à leur âge, leadership, management de vie et conseil pour la création d'entreprise.</p>
+        <div class="price">220.000 <span>FCFA</span></div>
         <a href="#contact" class="discover">En savoir plus →</a>
       </div>
       <div class="prog-card reveal">
         <span class="tag">Couple</span>
         <h3>Coaching couple</h3>
-        <p>Retrouver le dialogue, la compréhension mutuelle et l'équilibre au sein de votre couple.</p>
+        <p>Développement personnel, leadership, management de vie, vie de couple, entrepreneuriat et conseil pour la création d'entreprise.</p>
+        <div class="price">320.000 <span>FCFA</span></div>
         <a href="#contact" class="discover">En savoir plus →</a>
       </div>
       <div class="prog-card reveal">
-        <span class="tag">Famille</span>
-        <h3>Famille &amp; parentalité</h3>
-        <p>Construire un environnement familial plus harmonieux, pour vous et pour vos enfants.</p>
+        <span class="tag">Club de lecture</span>
+        <h3>Puissance de l'auto-éducation</h3>
+        <p>Résumé de livre, résumé surprise best-seller, film éducatif, échange B to B et objectif du mois.</p>
+        <div class="price">100% <span>Gratuit</span></div>
         <a href="#contact" class="discover">En savoir plus →</a>
       </div>
     </div>
@@ -993,21 +1040,50 @@
     <div class="exp-head reveal">
       <div class="eyebrow">Impact &amp; communauté</div>
       <h2>Au-delà du coaching, une communauté qui <span class="accent">grandit.</span></h2>
+      <p style="margin-top:20px; max-width:600px;">Conférences, séminaires, programmes pour la jeunesse et rencontres avec les femmes entrepreneures — un engagement de terrain, partout où il compte.</p>
     </div>
+
     <div class="gallery reveal">
       <div class="main-img">
-        <img src="images/549071.jpg" alt="Rencontre avec la communauté de femmes">
-        <div class="caption">Rencontre avec la communauté — femmes, mères et entrepreneures réunies</div>
+        <img src="images/549132.jpg" alt="Conférence Women Magic Power (WMP)">
+        <div class="caption">Women Magic Power (WMP) — conférence pour les femmes entrepreneures</div>
       </div>
       <div class="side">
+        <div class="img-box">
+          <img src="images/549131.jpg" alt="Conférence RALIE, rencontre africaine des lecteurs">
+          <div class="caption">RALIE — Rencontre Africaine des Lecteurs Intelligents et Éveillés</div>
+        </div>
         <div class="img-box">
           <img src="images/549070.jpg" alt="Marina Minoungou lors d'un événement public">
           <div class="caption">Présence lors d'un événement public</div>
         </div>
-        <div class="img-box">
-          <img src="images/549065.jpg" alt="Marina Minoungou">
-          <div class="caption">Marina, au quotidien</div>
-        </div>
+      </div>
+    </div>
+
+    <div class="mosaic reveal">
+      <div class="mosaic-item">
+        <img src="images/549137.jpg" alt="Séminaire vie de couple, Coach Marina Minoungou">
+        <div class="caption">Séminaire « Comment enrichir sa vie de couple »</div>
+      </div>
+      <div class="mosaic-item">
+        <img src="images/549127.jpg" alt="Programme d'éducation continue de la femme, WMP">
+        <div class="caption">Programme d'éducation continue de la femme</div>
+      </div>
+      <div class="mosaic-item">
+        <img src="images/549136.jpg" alt="Enfants du programme OLC">
+        <div class="caption">One Life One Chance (OLC) — accompagnement des enfants</div>
+      </div>
+      <div class="mosaic-item">
+        <img src="images/549135.jpg" alt="Sortie éducative avec les enfants du programme OLC">
+        <div class="caption">Sortie éducative avec les enfants du Programme d'éducation continue</div>
+      </div>
+      <div class="mosaic-item">
+        <img src="images/549129.jpg" alt="Dîner de gala Women Magic Power">
+        <div class="caption">Moment de partage — communauté Women Magic Power</div>
+      </div>
+      <div class="mosaic-item">
+        <img src="images/549071.jpg" alt="Rencontre avec la communauté de femmes">
+        <div class="caption">Rencontre avec la communauté — femmes, mères et entrepreneures réunies</div>
       </div>
     </div>
   </div>
@@ -1054,12 +1130,12 @@
         <div class="eyebrow on-dark">Réseaux sociaux</div>
         <h2>Suivez Coach Marina au quotidien.</h2>
         <p>Rejoignez une communauté de plus de 46 000 abonnés sur Facebook, engagée autour du développement personnel, de la vie de couple et de la famille.</p>
-        <a href="#" class="btn btn-gold">Rejoindre la communauté</a>
+        <a href="https://www.facebook.com/share/1BzH82jctH/" target="_blank" class="btn btn-gold">Rejoindre la communauté</a>
       </div>
       <div class="social-cards">
-        <div class="soc-card"><div class="ic">f</div><div class="txt"><b>Facebook</b><span>46K+ abonnés</span></div></div>
-        <div class="soc-card"><div class="ic">◎</div><div class="txt"><b>Instagram</b><span>Coulisses &amp; conseils au quotidien</span></div></div>
-        <div class="soc-card"><div class="ic">✆</div><div class="txt"><b>WhatsApp</b><span>Échangez directement avec Marina</span></div></div>
+        <a class="soc-card" href="https://www.facebook.com/share/1BzH82jctH/" target="_blank"><div class="ic">f</div><div class="txt"><b>Facebook</b><span>46K+ abonnés</span></div></a>
+        <a class="soc-card" href="mailto:minoungoumarina@gmail.com"><div class="ic">✉</div><div class="txt"><b>Email</b><span>minoungoumarina@gmail.com</span></div></a>
+        <a class="soc-card" href="https://wa.me/22605284419" target="_blank"><div class="ic">✆</div><div class="txt"><b>WhatsApp</b><span>+226 05 28 44 19</span></div></a>
       </div>
     </div>
   </div>
@@ -1075,7 +1151,7 @@
     <p class="reveal">Prenez un moment pour vous, votre couple, votre famille ou votre projet professionnel.</p>
     <div class="ctas reveal">
       <a href="#contact" class="btn btn-gold">Réserver une séance</a>
-      <a href="#" class="btn btn-ghost-light">Contacter sur WhatsApp</a>
+      <a href="https://wa.me/22671907779" target="_blank" class="btn btn-ghost-light">Contacter sur WhatsApp</a>
     </div>
   </div>
 </section>
@@ -1087,8 +1163,10 @@
       <div class="eyebrow">Contact</div>
       <h2>Prenons rendez-vous.</h2>
       <p>Décrivez votre situation et le type d'accompagnement que vous recherchez. Marina vous répondra personnellement.</p>
-      <div class="info-row"><div class="ic">◍</div><div class="t"><b>Localisation</b><span>Ouagadougou, Burkina Faso</span></div></div>
-      <div class="info-row"><div class="ic">✆</div><div class="t"><b>WhatsApp</b><span>Réponse rapide sur demande</span></div></div>
+      <div class="info-row"><div class="ic">◍</div><div class="t"><b>Localisation</b><span>Restaurant The Nile, Wayalghin, côté Nord de l'ENAREF — Ouagadougou</span></div></div>
+      <div class="info-row"><div class="ic">✆</div><div class="t"><b>Téléphone</b><span>+226 71 90 77 79 / +226 54 10 49 87</span></div></div>
+      <div class="info-row"><div class="ic">✆</div><div class="t"><b>WhatsApp</b><span>+226 05 28 44 19</span></div></div>
+      <div class="info-row"><div class="ic">✉</div><div class="t"><b>Email</b><span>minoungoumarina@gmail.com</span></div></div>
       <div class="info-row"><div class="ic">f</div><div class="t"><b>Facebook</b><span>Coach Marina Minoungou — 46K+ abonnés</span></div></div>
     </div>
     <form onsubmit="event.preventDefault(); this.reset(); alert('Merci — votre demande a bien été envoyée.');">
@@ -1116,7 +1194,7 @@
       </div>
       <div class="submit-row">
         <button type="submit" class="btn btn-primary">Envoyer ma demande</button>
-        <a href="#" class="btn btn-outline">Contacter sur WhatsApp</a>
+        <a href="https://wa.me/22605284419" target="_blank" class="btn btn-outline">Contacter sur WhatsApp</a>
       </div>
     </form>
   </div>
@@ -1144,24 +1222,23 @@
         <a href="#expertise">Entrepreneuriat</a>
       </div>
       <div class="footer-col">
-        <h5>Suivez-moi</h5>
-        <a href="#">Facebook</a>
-        <a href="#">Instagram</a>
-        <a href="#">WhatsApp</a>
+        <h5>Contact</h5>
+        <a href="tel:+22671907779">+226 71 90 77 79</a>
+        <a href="https://wa.me/22605284419" target="_blank">WhatsApp</a>
+        <a href="mailto:minoungoumarina@gmail.com">minoungoumarina@gmail.com</a>
       </div>
     </div>
     <div class="footer-bottom">
       <span>© 2026 Marina Minoungou. Tous droits réservés.</span>
       <div class="footer-social">
-        <a href="#">f</a>
-        <a href="#">◎</a>
-        <a href="#">✆</a>
+        <a href="https://www.facebook.com/share/1BzH82jctH/" target="_blank">f</a>
+        <a href="https://wa.me/22605284419" target="_blank">✆</a>
       </div>
     </div>
   </div>
 </footer>
 
-<a href="#" class="wa-float" aria-label="WhatsApp">
+<a href="https://wa.me/22605284419" target="_blank" class="wa-float" aria-label="WhatsApp">
   <svg viewBox="0 0 24 24" fill="white"><path d="M12.04 2c-5.46 0-9.9 4.44-9.9 9.9 0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.9-4.44 9.9-9.9 0-2.64-1.03-5.13-2.9-7C17.17 3.03 14.68 2 12.04 2zm5.8 14.14c-.24.68-1.4 1.3-1.93 1.38-.5.08-1.13.11-1.82-.12-.42-.13-.96-.31-1.65-.6-2.9-1.25-4.8-4.16-4.94-4.35-.14-.19-1.18-1.57-1.18-3 0-1.42.75-2.12 1.02-2.41.27-.29.58-.36.78-.36.2 0 .39 0 .56.01.18.01.42-.07.66.5.24.58.81 2 .88 2.14.07.14.12.31.02.5-.09.19-.14.31-.28.48-.14.17-.29.37-.42.5-.14.14-.28.29-.12.57.16.28.71 1.17 1.53 1.9 1.05.94 1.94 1.23 2.22 1.37.28.14.44.12.61-.07.16-.19.68-.79.86-1.06.18-.27.36-.22.6-.13.24.09 1.53.72 1.8.85.27.13.44.19.51.3.07.11.07.62-.17 1.3z"/></svg>
 </a>
 
