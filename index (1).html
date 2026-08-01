@@ -1,0 +1,1223 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Marina Minoungou — Coach, Mentor, Entrepreneure</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --wine:#641B35;
+    --plum:#321329;
+    --gold:#C9A35B;
+    --gold-soft:#E4CFA0;
+    --champagne:#F4EBDD;
+    --ivory:#FCF9F5;
+    --charcoal:#181719;
+    --white:#FFFFFF;
+    --serif: 'Fraunces', serif;
+    --sans: 'Manrope', sans-serif;
+    --ease: cubic-bezier(.22,.61,.36,1);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:var(--sans);
+    color:var(--charcoal);
+    background:var(--ivory);
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+  img{max-width:100%;display:block;}
+  a{text-decoration:none;color:inherit;}
+  ul{list-style:none;}
+  button{font-family:inherit;cursor:pointer;border:none;background:none;}
+  .container{width:100%;max-width:1240px;margin:0 auto;padding:0 32px;}
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.001s !important; transition-duration:0.001s !important;}
+  }
+
+  /* ---------- Reveal on scroll ---------- */
+  .reveal{opacity:0; transform:translateY(28px); transition:opacity 0.9s var(--ease), transform 0.9s var(--ease);}
+  .reveal.is-visible{opacity:1; transform:translateY(0);}
+
+  /* ---------- Moon-phase signature motif ---------- */
+  .phase-mark{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+  }
+  .phase-mark span{
+    width:9px;height:9px;border-radius:50%;
+    background:var(--gold);
+    display:inline-block;
+  }
+  .phase-mark span:nth-child(1){opacity:.35;}
+  .phase-mark span:nth-child(2){opacity:.65;}
+  .phase-mark span:nth-child(3){opacity:1;}
+
+  .phase-divider{
+    width:100%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    margin:0 auto;
+  }
+  .phase-divider i{
+    display:inline-block;
+    border-radius:50%;
+    background:var(--gold);
+  }
+  .phase-divider .p1{width:6px;height:6px;opacity:.3;}
+  .phase-divider .p2{width:9px;height:9px;opacity:.55;}
+  .phase-divider .p3{width:13px;height:13px;opacity:.85;}
+  .phase-divider .p4{width:9px;height:9px;opacity:.55;}
+  .phase-divider .p5{width:6px;height:6px;opacity:.3;}
+
+  /* ---------- Eyebrow ---------- */
+  .eyebrow{
+    font-family:var(--sans);
+    font-size:12px;
+    letter-spacing:.22em;
+    text-transform:uppercase;
+    font-weight:700;
+    color:var(--wine);
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:22px;
+  }
+  .eyebrow::before{
+    content:'';
+    width:32px;height:1px;
+    background:var(--gold);
+    display:inline-block;
+  }
+  .eyebrow.on-dark{color:var(--gold-soft);}
+
+  h1,h2,h3,h4{
+    font-family:var(--serif);
+    font-weight:500;
+    line-height:1.08;
+    color:var(--plum);
+    letter-spacing:-0.01em;
+  }
+  .accent{color:var(--wine); font-style:italic; font-weight:500;}
+  .accent-gold{color:var(--gold);}
+
+  p{color:#4a4249; line-height:1.75; font-weight:400;}
+
+  /* ---------- Buttons ---------- */
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    padding:17px 34px;
+    font-size:13px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    font-weight:700;
+    border-radius:2px;
+    transition:transform .45s var(--ease), background .35s var(--ease), color .35s var(--ease), box-shadow .35s var(--ease);
+    white-space:nowrap;
+  }
+  .btn-primary{
+    background:var(--wine);
+    color:var(--ivory);
+    box-shadow:0 8px 24px -8px rgba(100,27,53,.55);
+  }
+  .btn-primary:hover{transform:translateY(-2px); background:var(--plum);}
+  .btn-outline{
+    background:transparent;
+    color:var(--plum);
+    border:1px solid rgba(50,19,41,.35);
+  }
+  .btn-outline:hover{border-color:var(--plum); background:rgba(50,19,41,.04); transform:translateY(-2px);}
+  .btn-gold{
+    background:var(--gold);
+    color:var(--plum);
+  }
+  .btn-gold:hover{background:var(--gold-soft); transform:translateY(-2px);}
+  .btn-ghost-light{
+    background:transparent;
+    color:var(--ivory);
+    border:1px solid rgba(252,249,245,.4);
+  }
+  .btn-ghost-light:hover{border-color:var(--gold); color:var(--gold-soft); transform:translateY(-2px);}
+
+  /* ================= NAV ================= */
+  header{
+    position:fixed; top:0; left:0; right:0; z-index:1000;
+    padding:22px 0;
+    transition:padding .4s var(--ease), background .4s var(--ease), box-shadow .4s var(--ease);
+  }
+  header.scrolled{
+    padding:14px 0;
+    background:rgba(252,249,245,.88);
+    backdrop-filter:blur(14px);
+    -webkit-backdrop-filter:blur(14px);
+    box-shadow:0 6px 30px -18px rgba(24,23,25,.25);
+  }
+  nav{
+    display:flex; align-items:center; justify-content:space-between;
+  }
+  .wordmark{
+    font-family:var(--serif);
+    font-size:19px;
+    letter-spacing:.04em;
+    color:var(--plum);
+    font-weight:500;
+  }
+  .wordmark b{color:var(--wine); font-weight:600;}
+  .nav-links{
+    display:flex; gap:34px; align-items:center;
+  }
+  .nav-links a{
+    font-size:13px;
+    letter-spacing:.05em;
+    font-weight:600;
+    color:var(--charcoal);
+    position:relative;
+    padding:4px 0;
+  }
+  .nav-links a::after{
+    content:'';
+    position:absolute; left:0; bottom:0;
+    width:0; height:1px; background:var(--wine);
+    transition:width .35s var(--ease);
+  }
+  .nav-links a:hover::after{width:100%;}
+  .nav-cta{display:flex; align-items:center; gap:20px;}
+  .nav-cta .btn{padding:13px 24px; font-size:11.5px;}
+  .burger{
+    display:none;
+    width:26px; height:20px; position:relative;
+    flex-direction:column; justify-content:space-between;
+  }
+  .burger span{
+    display:block; height:1.5px; width:100%; background:var(--plum);
+    transition:transform .3s var(--ease), opacity .3s var(--ease);
+  }
+  .burger.active span:nth-child(1){transform:translateY(9px) rotate(45deg);}
+  .burger.active span:nth-child(2){opacity:0;}
+  .burger.active span:nth-child(3){transform:translateY(-9px) rotate(-45deg);}
+
+  .mobile-menu{
+    position:fixed; inset:0; background:var(--plum);
+    z-index:999;
+    display:flex; flex-direction:column; align-items:center; justify-content:center; gap:28px;
+    transform:translateY(-100%);
+    transition:transform .55s var(--ease);
+  }
+  .mobile-menu.open{transform:translateY(0);}
+  .mobile-menu a{
+    font-family:var(--serif); font-size:28px; color:var(--champagne); font-weight:400;
+  }
+  .mobile-menu .btn{margin-top:12px;}
+
+  /* ================= HERO ================= */
+  .hero{
+    position:relative;
+    min-height:100vh;
+    display:flex; align-items:center;
+    padding:150px 0 90px;
+    background:
+      radial-gradient(1100px 700px at 78% 8%, rgba(201,163,91,.14), transparent 60%),
+      linear-gradient(180deg, var(--ivory) 0%, var(--champagne) 100%);
+    overflow:hidden;
+  }
+  .hero-grid{
+    display:grid;
+    grid-template-columns:1.05fr .95fr;
+    gap:60px;
+    align-items:center;
+  }
+  .hero-copy .eyebrow{margin-bottom:26px;}
+  .hero h1{
+    font-size:clamp(38px, 5vw, 64px);
+    margin-bottom:26px;
+  }
+  .hero p.lead{
+    font-size:17px; max-width:460px; margin-bottom:40px;
+  }
+  .hero-ctas{display:flex; gap:16px; flex-wrap:wrap; margin-bottom:64px;}
+
+  .hero-stats{
+    display:flex; gap:0;
+    border-top:1px solid rgba(100,27,53,.15);
+    padding-top:28px;
+  }
+  .hero-stats .stat{
+    flex:1;
+    padding-right:24px;
+    border-right:1px solid rgba(100,27,53,.15);
+  }
+  .hero-stats .stat:last-child{border-right:none;}
+  .hero-stats .stat .num{
+    font-family:var(--serif); font-size:26px; color:var(--wine); font-weight:600; display:block; margin-bottom:4px;
+  }
+  .hero-stats .stat .label{
+    font-size:12px; color:#6b6067; line-height:1.4; letter-spacing:.02em;
+  }
+
+  .hero-visual{
+    position:relative;
+    display:flex; justify-content:center;
+  }
+  .hero-visual .frame{
+    position:relative;
+    width:100%;
+    max-width:440px;
+    aspect-ratio: 4/5;
+    border-radius:6px 6px 100px 6px;
+    overflow:hidden;
+    box-shadow:0 50px 90px -40px rgba(50,19,41,.45);
+  }
+  .hero-visual .frame img{
+    width:100%; height:100%; object-fit:cover; object-position:top center;
+  }
+  .hero-visual .ring{
+    position:absolute;
+    border:1px solid rgba(201,163,91,.55);
+    border-radius:50%;
+  }
+  .hero-visual .ring.r1{width:160px; height:160px; top:-40px; right:-40px;}
+  .hero-visual .ring.r2{width:70px; height:70px; bottom:40px; left:-30px; border-color:rgba(100,27,53,.35);}
+  .hero-visual .glow{
+    position:absolute; width:340px; height:340px; border-radius:50%;
+    background:radial-gradient(circle, rgba(201,163,91,.35), transparent 70%);
+    top:-60px; right:-60px; z-index:-1; filter:blur(10px);
+  }
+  .hero-visual .tag-card{
+    position:absolute;
+    bottom:-26px; left:-30px;
+    background:var(--white);
+    padding:16px 22px;
+    border-radius:4px;
+    box-shadow:0 24px 50px -20px rgba(24,23,25,.25);
+    display:flex; align-items:center; gap:12px;
+  }
+  .tag-card .phase-mark span{width:7px;height:7px;}
+  .tag-card .txt{font-size:12.5px; font-weight:700; color:var(--plum); letter-spacing:.03em;}
+  .tag-card .txt small{display:block; font-size:10.5px; font-weight:500; color:#847b81; letter-spacing:.02em; margin-top:2px;}
+
+  /* ================= SECTION GENERIC ================= */
+  section{position:relative;}
+  .section-pad{padding:120px 0;}
+  .section-pad-sm{padding:90px 0;}
+  .center{text-align:center;}
+  .center .eyebrow{justify-content:center;}
+  .center .eyebrow::before{display:none;}
+  .max-w{max-width:680px; margin:0 auto;}
+
+  /* ---- Section 2 : Positioning ---- */
+  .positioning{background:var(--ivory);}
+  .pos-grid{
+    display:grid;
+    grid-template-columns:.85fr 1.15fr;
+    gap:80px;
+    align-items:center;
+  }
+  .pos-image{
+    position:relative;
+    border-radius:4px 4px 90px 4px;
+    overflow:hidden;
+    box-shadow:0 40px 80px -35px rgba(50,19,41,.35);
+  }
+  .pos-image img{width:100%; height:100%; object-fit:cover; object-position:top;}
+  .pos-copy h2{font-size:clamp(30px,3.6vw,44px); margin-bottom:28px;}
+  .pos-copy p{font-size:16px; margin-bottom:20px; max-width:520px;}
+  .pos-list{margin-top:32px; display:flex; flex-direction:column; gap:18px;}
+  .pos-list .item{display:flex; gap:16px; align-items:flex-start;}
+  .pos-list .item .dot{
+    width:6px;height:6px;border-radius:50%;background:var(--gold);
+    margin-top:9px; flex-shrink:0;
+  }
+  .pos-list .item span{font-size:15px; color:#4a4249; font-weight:500;}
+
+  /* ---- Section 3 : Expertise ---- */
+  .expertise{background:var(--champagne);}
+  .exp-head{max-width:640px; margin-bottom:70px;}
+  .exp-head h2{font-size:clamp(30px,3.6vw,44px);}
+  .exp-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:1px;
+    background:rgba(50,19,41,.1);
+    border:1px solid rgba(50,19,41,.1);
+  }
+  .exp-card{
+    background:var(--ivory);
+    padding:44px 34px;
+    transition:background .4s var(--ease);
+  }
+  .exp-card:hover{background:var(--white);}
+  .exp-card .num{
+    font-family:var(--serif);
+    font-size:14px;
+    color:var(--gold);
+    font-weight:600;
+    letter-spacing:.05em;
+    margin-bottom:26px;
+    display:block;
+  }
+  .exp-card h3{font-size:21px; margin-bottom:14px; color:var(--plum);}
+  .exp-card p{font-size:14.5px; margin-bottom:22px;}
+  .exp-card .discover{
+    font-size:12px; font-weight:700; letter-spacing:.08em; text-transform:uppercase;
+    color:var(--wine); display:inline-flex; align-items:center; gap:8px;
+  }
+  .exp-card .discover .arrow{transition:transform .3s var(--ease);}
+  .exp-card:hover .discover .arrow{transform:translateX(5px);}
+
+  /* ---- Section 4 : Signature coaching (dark) ---- */
+  .signature{
+    background:linear-gradient(160deg, var(--plum) 0%, var(--wine) 100%);
+    color:var(--champagne);
+    overflow:hidden;
+  }
+  .sig-inner{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:70px;
+    align-items:center;
+  }
+  .signature h2{color:var(--ivory); font-size:clamp(30px,3.6vw,42px); margin-bottom:26px;}
+  .signature p.lead{color:rgba(244,235,221,.78); font-size:16px; max-width:480px; margin-bottom:44px;}
+  .stages{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:2px;
+    background:rgba(244,235,221,.15);
+    margin-bottom:44px;
+  }
+  .stage{
+    background:rgba(50,19,41,.35);
+    padding:28px 24px;
+  }
+  .stage .n{
+    font-family:var(--serif);
+    font-size:13px;
+    color:var(--gold);
+    display:block;
+    margin-bottom:10px;
+    letter-spacing:.05em;
+  }
+  .stage h4{color:var(--ivory); font-size:18px; font-weight:500;}
+  .sig-visual{position:relative;}
+  .sig-visual .frame{
+    border-radius:4px 90px 4px 4px;
+    overflow:hidden;
+    aspect-ratio:4/5;
+    max-width:420px;
+    margin-left:auto;
+    box-shadow:0 40px 90px -30px rgba(0,0,0,.5);
+  }
+  .sig-visual .frame img{width:100%; height:100%; object-fit:cover; object-position:top;}
+  .sig-visual .ring{
+    position:absolute; border:1px solid rgba(201,163,91,.5); border-radius:50%;
+    width:120px; height:120px; bottom:-30px; left:-20px;
+  }
+
+  /* ---- Section 5 : About ---- */
+  .about{background:var(--ivory);}
+  .about-grid{
+    display:grid;
+    grid-template-columns:1fr 1.1fr;
+    gap:80px;
+    align-items:center;
+  }
+  .about-image{position:relative;}
+  .about-image .frame{
+    border-radius:4px 4px 4px 90px;
+    overflow:hidden;
+    aspect-ratio:3/4;
+    box-shadow:0 40px 80px -35px rgba(50,19,41,.35);
+  }
+  .about-image .frame img{width:100%;height:100%;object-fit:cover;object-position:top;}
+  .about-copy h2{font-size:clamp(30px,3.6vw,42px); margin-bottom:28px;}
+  .about-copy p{font-size:16px; margin-bottom:20px; max-width:540px;}
+  .signature-sig{
+    font-family:var(--serif);
+    font-style:italic;
+    font-size:30px;
+    color:var(--wine);
+    margin:34px 0 30px;
+  }
+
+  /* ---- Section 6: Social authority ---- */
+  .authority{
+    background:var(--plum);
+    color:var(--ivory);
+  }
+  .auth-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:1px;
+    background:rgba(244,235,221,.12);
+  }
+  .auth-item{
+    padding:56px 30px;
+    text-align:center;
+    background:var(--plum);
+  }
+  .auth-item .big{
+    font-family:var(--serif);
+    font-size:clamp(34px,4vw,52px);
+    color:var(--gold);
+    font-weight:600;
+    display:block;
+    margin-bottom:10px;
+  }
+  .auth-item .lbl{font-size:13px; color:rgba(244,235,221,.75); letter-spacing:.04em;}
+
+  /* ---- Section 7: Programmes ---- */
+  .programmes{background:var(--champagne);}
+  .prog-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:28px;
+    margin-top:60px;
+  }
+  .prog-card{
+    background:var(--ivory);
+    padding:46px 36px;
+    border-radius:2px;
+    border-top:3px solid var(--wine);
+    transition:transform .4s var(--ease), box-shadow .4s var(--ease);
+  }
+  .prog-card:hover{transform:translateY(-8px); box-shadow:0 30px 60px -30px rgba(50,19,41,.3);}
+  .prog-card .tag{
+    font-size:11.5px; letter-spacing:.14em; text-transform:uppercase; font-weight:700; color:var(--gold);
+    margin-bottom:18px; display:block;
+  }
+  .prog-card h3{font-size:24px; margin-bottom:16px;}
+  .prog-card p{font-size:14.5px; margin-bottom:24px;}
+  .prog-card .discover{
+    font-size:12px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--wine);
+  }
+
+  /* ---- Section 8: Events gallery ---- */
+  .events{background:var(--ivory);}
+  .gallery{
+    display:grid;
+    grid-template-columns:1.4fr 1fr;
+    gap:20px;
+    margin-top:60px;
+  }
+  .gallery .main-img{
+    border-radius:4px;
+    overflow:hidden;
+    position:relative;
+    min-height:480px;
+  }
+  .gallery .main-img img{width:100%;height:100%;object-fit:cover; position:absolute; inset:0;}
+  .gallery .side{
+    display:grid;
+    grid-template-rows:1fr 1fr;
+    gap:20px;
+  }
+  .gallery .side .img-box{
+    border-radius:4px;
+    overflow:hidden;
+    position:relative;
+  }
+  .gallery .side .img-box img{width:100%;height:100%;object-fit:cover; position:absolute; inset:0;}
+  .gallery .caption{
+    position:absolute; left:0; right:0; bottom:0;
+    padding:26px 24px 20px;
+    background:linear-gradient(0deg, rgba(24,23,25,.72), transparent);
+    color:var(--ivory); font-size:13px; letter-spacing:.03em;
+  }
+
+  /* ---- Section 9: Testimonials ---- */
+  .testimonials{background:var(--champagne);}
+  .test-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:28px;
+    margin-top:60px;
+  }
+  .test-card{
+    background:var(--ivory);
+    padding:44px 34px;
+    border-radius:2px;
+    position:relative;
+    min-height:220px;
+    display:flex; flex-direction:column; justify-content:space-between;
+    border:1px dashed rgba(100,27,53,.25);
+  }
+  .test-card .quote-mark{
+    font-family:var(--serif); font-size:44px; color:var(--gold); line-height:1; margin-bottom:18px;
+  }
+  .test-card .placeholder-txt{
+    font-size:14px; color:#8a7f85; font-style:italic; margin-bottom:24px;
+  }
+  .test-card .who{
+    display:flex; align-items:center; gap:12px;
+  }
+  .test-card .avatar{
+    width:38px;height:38px;border-radius:50%;
+    background:var(--champagne);
+    border:1px dashed var(--gold);
+  }
+  .test-card .who-txt{font-size:12.5px; color:#8a7f85;}
+
+  /* ---- Section 10: Social ---- */
+  .social{background:var(--ivory);}
+  .social-inner{
+    background:linear-gradient(135deg, var(--wine), var(--plum));
+    border-radius:6px;
+    padding:70px 60px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    align-items:center;
+    gap:50px;
+    overflow:hidden;
+    position:relative;
+  }
+  .social-inner::before{
+    content:'';
+    position:absolute; width:400px; height:400px; border-radius:50%;
+    background:radial-gradient(circle, rgba(201,163,91,.18), transparent 70%);
+    top:-120px; right:-100px;
+  }
+  .social-copy h2{color:var(--ivory); font-size:clamp(26px,3vw,36px); margin-bottom:20px;}
+  .social-copy p{color:rgba(244,235,221,.75); margin-bottom:32px; max-width:420px;}
+  .social-cards{display:flex; flex-direction:column; gap:16px;}
+  .soc-card{
+    background:rgba(252,249,245,.08);
+    border:1px solid rgba(252,249,245,.18);
+    border-radius:4px;
+    padding:20px 24px;
+    display:flex; align-items:center; gap:16px;
+  }
+  .soc-card .ic{
+    width:44px;height:44px;border-radius:50%;
+    background:var(--gold);
+    display:flex; align-items:center; justify-content:center;
+    color:var(--plum); font-weight:800; font-size:15px; flex-shrink:0;
+  }
+  .soc-card .txt{color:var(--ivory);}
+  .soc-card .txt b{display:block; font-size:15px; margin-bottom:2px;}
+  .soc-card .txt span{font-size:12.5px; color:rgba(244,235,221,.65);}
+
+  /* ---- Section 11: CTA ---- */
+  .cta-final{
+    background:var(--plum);
+    color:var(--ivory);
+    text-align:center;
+    position:relative;
+    overflow:hidden;
+  }
+  .cta-final::before{
+    content:'';
+    position:absolute; inset:0;
+    background:radial-gradient(700px 400px at 50% 0%, rgba(201,163,91,.16), transparent 70%);
+  }
+  .cta-final h2{color:var(--ivory); font-size:clamp(32px,4.4vw,54px); margin-bottom:22px; position:relative;}
+  .cta-final p{color:rgba(244,235,221,.75); max-width:560px; margin:0 auto 44px; font-size:16.5px; position:relative;}
+  .cta-final .ctas{display:flex; gap:18px; justify-content:center; flex-wrap:wrap; position:relative;}
+
+  /* ---- Contact ---- */
+  .contact{background:var(--ivory);}
+  .contact-grid{
+    display:grid;
+    grid-template-columns:.9fr 1.1fr;
+    gap:70px;
+  }
+  .contact-info h2{font-size:clamp(28px,3.4vw,38px); margin-bottom:24px;}
+  .contact-info p{font-size:15.5px; margin-bottom:36px; max-width:400px;}
+  .info-row{
+    display:flex; align-items:center; gap:16px;
+    padding:18px 0;
+    border-top:1px solid rgba(100,27,53,.14);
+  }
+  .info-row:last-of-type{border-bottom:1px solid rgba(100,27,53,.14);}
+  .info-row .ic{
+    width:38px;height:38px;border-radius:50%;
+    background:var(--champagne); color:var(--wine);
+    display:flex;align-items:center;justify-content:center;
+    font-size:15px;flex-shrink:0;
+  }
+  .info-row .t b{display:block; font-size:14px; color:var(--plum);}
+  .info-row .t span{font-size:13px; color:#8a7f85;}
+
+  form{
+    background:var(--white);
+    padding:48px;
+    border-radius:4px;
+    box-shadow:0 40px 80px -40px rgba(50,19,41,.25);
+  }
+  .form-row{display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-bottom:20px;}
+  .field{display:flex; flex-direction:column; gap:8px;}
+  .field.full{grid-column:1/-1;}
+  label{font-size:12px; font-weight:700; letter-spacing:.05em; text-transform:uppercase; color:var(--plum);}
+  input, select, textarea{
+    border:1px solid rgba(100,27,53,.2);
+    padding:14px 16px;
+    font-family:var(--sans);
+    font-size:14.5px;
+    border-radius:2px;
+    background:var(--ivory);
+    color:var(--charcoal);
+    transition:border-color .3s var(--ease);
+  }
+  input:focus, select:focus, textarea:focus{
+    outline:none; border-color:var(--wine); background:var(--white);
+  }
+  textarea{resize:vertical; min-height:110px;}
+  .submit-row{margin-top:8px; display:flex; align-items:center; gap:20px; flex-wrap:wrap;}
+  .submit-row .btn{width:auto;}
+
+  /* ---- Footer ---- */
+  footer{
+    background:var(--charcoal);
+    color:var(--ivory);
+    padding:80px 0 30px;
+  }
+  .footer-grid{
+    display:grid;
+    grid-template-columns:1.4fr 1fr 1fr 1fr;
+    gap:50px;
+    padding-bottom:50px;
+    border-bottom:1px solid rgba(244,235,221,.12);
+  }
+  .footer-brand .wordmark{color:var(--ivory);}
+  .footer-brand .wordmark b{color:var(--gold);}
+  .footer-brand p{color:rgba(244,235,221,.55); font-size:13.5px; margin-top:16px; max-width:280px;}
+  .footer-col h5{
+    font-size:12px; letter-spacing:.1em; text-transform:uppercase; color:var(--gold); margin-bottom:20px; font-weight:700;
+  }
+  .footer-col a, .footer-col p{
+    display:block; font-size:14px; color:rgba(244,235,221,.65); margin-bottom:12px;
+  }
+  .footer-col a:hover{color:var(--gold-soft);}
+  .footer-bottom{
+    display:flex; justify-content:space-between; align-items:center; padding-top:30px; flex-wrap:wrap; gap:12px;
+  }
+  .footer-bottom span{font-size:12.5px; color:rgba(244,235,221,.45);}
+  .footer-social{display:flex; gap:14px;}
+  .footer-social a{
+    width:34px;height:34px;border-radius:50%;
+    border:1px solid rgba(244,235,221,.2);
+    display:flex;align-items:center;justify-content:center;
+    font-size:12px; color:rgba(244,235,221,.7);
+    transition:border-color .3s, color .3s;
+  }
+  .footer-social a:hover{border-color:var(--gold); color:var(--gold);}
+
+  /* ---- Sticky WhatsApp (mobile) ---- */
+  .wa-float{
+    position:fixed;
+    bottom:24px; right:24px;
+    z-index:900;
+    width:60px;height:60px;border-radius:50%;
+    background:#25D366;
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 12px 30px -10px rgba(37,211,102,.6);
+    transition:transform .3s var(--ease);
+  }
+  .wa-float:hover{transform:scale(1.08);}
+  .wa-float svg{width:28px;height:28px;}
+
+  /* ---- Counter animation utility ---- */
+  .counted{transition:none;}
+
+  /* =============== RESPONSIVE =============== */
+  @media (max-width: 1024px){
+    .hero-grid, .pos-grid, .about-grid, .sig-inner{grid-template-columns:1fr; gap:60px;}
+    .hero-visual{order:-1;}
+    .exp-grid{grid-template-columns:repeat(2,1fr);}
+    .prog-grid, .test-grid{grid-template-columns:repeat(2,1fr);}
+    .auth-grid{grid-template-columns:repeat(2,1fr);}
+    .gallery{grid-template-columns:1fr;}
+    .gallery .main-img{min-height:320px;}
+    .contact-grid{grid-template-columns:1fr;}
+    .social-inner{grid-template-columns:1fr;}
+  }
+
+  @media (max-width: 720px){
+    .container{padding:0 22px;}
+    .nav-links{display:none;}
+    .nav-cta .btn.btn-outline{display:none;}
+    .burger{display:flex;}
+    .hero{padding:120px 0 70px;}
+    .hero-stats{flex-wrap:wrap; gap:20px;}
+    .hero-stats .stat{flex:1 1 40%; border-right:none; padding-right:0;}
+    .section-pad{padding:80px 0;}
+    .section-pad-sm{padding:60px 0;}
+    .exp-grid, .prog-grid, .test-grid, .auth-grid{grid-template-columns:1fr;}
+    .form-row{grid-template-columns:1fr;}
+    form{padding:30px 24px;}
+    .footer-grid{grid-template-columns:1fr 1fr; gap:36px;}
+    .social-inner{padding:44px 26px;}
+    .hero-visual .tag-card{left:0; bottom:-20px; padding:12px 16px;}
+    .btn{padding:15px 26px; font-size:12px;}
+  }
+</style>
+</head>
+<body>
+
+<!-- ================= HEADER ================= -->
+<header id="siteHeader">
+  <div class="container">
+    <nav>
+      <a href="#top" class="wordmark">MARINA <b>MINOUNGOU</b></a>
+      <ul class="nav-links">
+        <li><a href="#top">Accueil</a></li>
+        <li><a href="#about">À propos</a></li>
+        <li><a href="#expertise">Coaching</a></li>
+        <li><a href="#programmes">Programmes</a></li>
+        <li><a href="#events">Événements</a></li>
+        <li><a href="#testimonials">Témoignages</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <div class="nav-cta">
+        <a href="#contact" class="btn btn-outline">Prendre rendez-vous</a>
+        <div class="burger" id="burger"><span></span><span></span><span></span></div>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#top">Accueil</a>
+  <a href="#about">À propos</a>
+  <a href="#expertise">Coaching</a>
+  <a href="#programmes">Programmes</a>
+  <a href="#events">Événements</a>
+  <a href="#testimonials">Témoignages</a>
+  <a href="#contact">Contact</a>
+  <a href="#contact" class="btn btn-gold">Prendre rendez-vous</a>
+</div>
+
+<!-- ================= HERO ================= -->
+<section class="hero" id="top">
+  <div class="container hero-grid">
+    <div class="hero-copy">
+      <div class="eyebrow">Coach • Mentor • Entrepreneure</div>
+      <h1 class="reveal">Construisez une vie, un couple<br> et une famille <span class="accent">plus épanouis.</span></h1>
+      <p class="lead reveal">Coach Marina Minoungou accompagne les femmes, les couples, les parents et les entrepreneurs vers plus d'équilibre, de confiance et d'épanouissement.</p>
+      <div class="hero-ctas reveal">
+        <a href="#contact" class="btn btn-primary">Réserver une séance</a>
+        <a href="#about" class="btn btn-outline">Découvrir mon approche</a>
+      </div>
+      <div class="hero-stats reveal">
+        <div class="stat">
+          <span class="num" data-count="46">0</span>
+          <span class="label">Abonnés Facebook</span>
+        </div>
+        <div class="stat">
+          <span class="num">Coaching</span>
+          <span class="label">Vie de couple</span>
+        </div>
+        <div class="stat">
+          <span class="num">Famille</span>
+          <span class="label">&amp; Éducation</span>
+        </div>
+        <div class="stat">
+          <span class="num">Leadership</span>
+          <span class="label">&amp; Entrepreneuriat</span>
+        </div>
+      </div>
+    </div>
+    <div class="hero-visual reveal">
+      <div class="glow"></div>
+      <div class="ring r1"></div>
+      <div class="ring r2"></div>
+      <div class="frame"><img src="images/549069.jpg" alt="Coach Marina Minoungou"></div>
+      <div class="tag-card">
+        <div class="phase-mark"><span></span><span></span><span></span></div>
+        <div class="txt">Ouagadougou<small>Burkina Faso</small></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SECTION 2: POSITIONING ================= -->
+<section class="positioning section-pad" id="about">
+  <div class="container pos-grid">
+    <div class="pos-image reveal">
+      <img src="images/549066.jpg" alt="Marina Minoungou, portrait professionnel">
+    </div>
+    <div class="pos-copy reveal">
+      <div class="eyebrow">Une approche humaine</div>
+      <h2>Chaque transformation commence par une <span class="accent">décision.</span></h2>
+      <p>L'accompagnement de Marina part d'un principe simple : on ne peut construire une vie de couple épanouie, une famille équilibrée ou un projet entrepreneurial solide sans d'abord se comprendre soi-même.</p>
+      <p>Son approche relie la conscience de soi, la qualité des relations, l'équilibre familial, l'éducation des enfants et la croissance personnelle et professionnelle — comme les différentes phases d'un même chemin.</p>
+      <div class="pos-list">
+        <div class="item"><span class="dot"></span><span>Conscience de soi &amp; développement personnel</span></div>
+        <div class="item"><span class="dot"></span><span>Relations de couple &amp; communication</span></div>
+        <div class="item"><span class="dot"></span><span>Vie de famille &amp; éducation des enfants</span></div>
+        <div class="item"><span class="dot"></span><span>Équilibre entre vie personnelle et vie professionnelle</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SECTION 3: EXPERTISE ================= -->
+<section class="expertise section-pad" id="expertise">
+  <div class="container">
+    <div class="exp-head reveal">
+      <div class="eyebrow">Domaines d'accompagnement</div>
+      <h2>Un accompagnement pour les moments qui comptent <span class="accent">vraiment.</span></h2>
+    </div>
+    <div class="exp-grid reveal">
+      <div class="exp-card">
+        <span class="num">01</span>
+        <h3>Développement personnel</h3>
+        <p>Retrouver la clarté, la confiance et l'alignement avec ce qui compte vraiment pour vous.</p>
+        <a href="#contact" class="discover">Découvrir <span class="arrow">→</span></a>
+      </div>
+      <div class="exp-card">
+        <span class="num">02</span>
+        <h3>Vie de couple</h3>
+        <p>Renforcer le dialogue, la compréhension mutuelle et l'harmonie au sein du couple.</p>
+        <a href="#contact" class="discover">Découvrir <span class="arrow">→</span></a>
+      </div>
+      <div class="exp-card">
+        <span class="num">03</span>
+        <h3>Éducation des enfants</h3>
+        <p>Accompagner les parents vers une posture éducative plus sereine et plus cohérente.</p>
+        <a href="#contact" class="discover">Découvrir <span class="arrow">→</span></a>
+      </div>
+      <div class="exp-card">
+        <span class="num">04</span>
+        <h3>Accompagnement des femmes</h3>
+        <p>Soutenir les femmes dans leur épanouissement personnel, familial et professionnel.</p>
+        <a href="#contact" class="discover">Découvrir <span class="arrow">→</span></a>
+      </div>
+      <div class="exp-card">
+        <span class="num">05</span>
+        <h3>Entrepreneuriat</h3>
+        <p>Accompagner les entrepreneurs dans la clarté de vision et la conduite de leurs projets.</p>
+        <a href="#contact" class="discover">Découvrir <span class="arrow">→</span></a>
+      </div>
+      <div class="exp-card">
+        <span class="num">06</span>
+        <h3>Équilibre vie perso &amp; pro</h3>
+        <p>Construire un quotidien où la vie professionnelle et la vie personnelle se soutiennent.</p>
+        <a href="#contact" class="discover">Découvrir <span class="arrow">→</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SECTION 4: SIGNATURE COACHING ================= -->
+<section class="signature section-pad">
+  <div class="container sig-inner">
+    <div class="sig-copy reveal">
+      <div class="eyebrow on-dark">Méthode d'accompagnement</div>
+      <h2>Vous n'avez pas besoin d'une autre vie.<br>Vous avez besoin d'un <span class="accent-gold">nouvel équilibre.</span></h2>
+      <p class="lead">Le parcours d'accompagnement se construit étape par étape, au rythme de chaque personne, chaque couple ou chaque famille.</p>
+      <div class="stages">
+        <div class="stage"><span class="n">Étape 1</span><h4>Écouter</h4></div>
+        <div class="stage"><span class="n">Étape 2</span><h4>Comprendre</h4></div>
+        <div class="stage"><span class="n">Étape 3</span><h4>Transformer</h4></div>
+        <div class="stage"><span class="n">Étape 4</span><h4>Construire</h4></div>
+      </div>
+      <a href="#contact" class="btn btn-gold">Commencer mon accompagnement</a>
+    </div>
+    <div class="sig-visual reveal">
+      <div class="ring"></div>
+      <div class="frame"><img src="images/549067.jpg" alt="Marina Minoungou en séance de coaching"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SECTION 5: ABOUT ================= -->
+<section class="about section-pad">
+  <div class="container about-grid">
+    <div class="about-image reveal">
+      <div class="frame"><img src="images/549064.jpg" alt="Marina Minoungou"></div>
+    </div>
+    <div class="about-copy reveal">
+      <div class="eyebrow">À propos</div>
+      <h2>Une femme engagée au service de l'épanouissement <span class="accent">des autres.</span></h2>
+      <p>Marina Minoungou est coach, entrepreneure et voix engagée pour l'épanouissement des femmes, des couples et des familles à Ouagadougou, au Burkina Faso.</p>
+      <p>À travers son travail, elle défend une vision où l'équilibre personnel, la qualité de la vie de couple, une parentalité plus sereine et une vie professionnelle épanouie peuvent avancer ensemble.</p>
+      <p>Sa communauté grandissante sur les réseaux sociaux témoigne de la confiance que de nombreuses femmes, couples et entrepreneurs lui accordent au quotidien.</p>
+      <div class="signature-sig">Marina Minoungou</div>
+      <a href="#contact" class="btn btn-outline">Découvrir mon parcours</a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SECTION 6: SOCIAL AUTHORITY ================= -->
+<section class="authority section-pad-sm">
+  <div class="auth-grid">
+    <div class="auth-item reveal"><span class="big" data-count="46">0</span><span class="lbl">Abonnés Facebook</span></div>
+    <div class="auth-item reveal"><span class="big">Communauté</span><span class="lbl">Engagée</span></div>
+    <div class="auth-item reveal"><span class="big">Couples</span><span class="lbl">&amp; Familles</span></div>
+    <div class="auth-item reveal"><span class="big">Femmes</span><span class="lbl">&amp; Entrepreneurs</span></div>
+  </div>
+</section>
+
+<!-- ================= SECTION 7: PROGRAMMES ================= -->
+<section class="programmes section-pad" id="programmes">
+  <div class="container">
+    <div class="exp-head reveal">
+      <div class="eyebrow">Programmes</div>
+      <h2>Choisissez l'accompagnement qui correspond à <span class="accent">votre situation.</span></h2>
+    </div>
+    <div class="prog-grid">
+      <div class="prog-card reveal">
+        <span class="tag">Individuel</span>
+        <h3>Coaching individuel</h3>
+        <p>Clarté, confiance et transformation personnelle pour avancer vers ce qui compte pour vous.</p>
+        <a href="#contact" class="discover">En savoir plus →</a>
+      </div>
+      <div class="prog-card reveal">
+        <span class="tag">Couple</span>
+        <h3>Coaching couple</h3>
+        <p>Retrouver le dialogue, la compréhension mutuelle et l'équilibre au sein de votre couple.</p>
+        <a href="#contact" class="discover">En savoir plus →</a>
+      </div>
+      <div class="prog-card reveal">
+        <span class="tag">Famille</span>
+        <h3>Famille &amp; parentalité</h3>
+        <p>Construire un environnement familial plus harmonieux, pour vous et pour vos enfants.</p>
+        <a href="#contact" class="discover">En savoir plus →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SECTION 8: EVENTS ================= -->
+<section class="events section-pad" id="events">
+  <div class="container">
+    <div class="exp-head reveal">
+      <div class="eyebrow">Impact &amp; communauté</div>
+      <h2>Au-delà du coaching, une communauté qui <span class="accent">grandit.</span></h2>
+    </div>
+    <div class="gallery reveal">
+      <div class="main-img">
+        <img src="images/549071.jpg" alt="Rencontre avec la communauté de femmes">
+        <div class="caption">Rencontre avec la communauté — femmes, mères et entrepreneures réunies</div>
+      </div>
+      <div class="side">
+        <div class="img-box">
+          <img src="images/549070.jpg" alt="Marina Minoungou lors d'un événement public">
+          <div class="caption">Présence lors d'un événement public</div>
+        </div>
+        <div class="img-box">
+          <img src="images/549065.jpg" alt="Marina Minoungou">
+          <div class="caption">Marina, au quotidien</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SECTION 9: TESTIMONIALS ================= -->
+<section class="testimonials section-pad" id="testimonials">
+  <div class="container">
+    <div class="exp-head reveal">
+      <div class="eyebrow">Témoignages</div>
+      <h2>Des transformations qui parlent <span class="accent">d'elles-mêmes.</span></h2>
+    </div>
+    <div class="test-grid">
+      <div class="test-card reveal">
+        <div>
+          <div class="quote-mark">"</div>
+          <div class="placeholder-txt">Un témoignage client sera bientôt partagé ici.</div>
+        </div>
+        <div class="who"><div class="avatar"></div><div class="who-txt">À venir</div></div>
+      </div>
+      <div class="test-card reveal">
+        <div>
+          <div class="quote-mark">"</div>
+          <div class="placeholder-txt">Un témoignage client sera bientôt partagé ici.</div>
+        </div>
+        <div class="who"><div class="avatar"></div><div class="who-txt">À venir</div></div>
+      </div>
+      <div class="test-card reveal">
+        <div>
+          <div class="quote-mark">"</div>
+          <div class="placeholder-txt">Un témoignage client sera bientôt partagé ici.</div>
+        </div>
+        <div class="who"><div class="avatar"></div><div class="who-txt">À venir</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SECTION 10: SOCIAL MEDIA ================= -->
+<section class="social section-pad">
+  <div class="container">
+    <div class="social-inner reveal">
+      <div class="social-copy">
+        <div class="eyebrow on-dark">Réseaux sociaux</div>
+        <h2>Suivez Coach Marina au quotidien.</h2>
+        <p>Rejoignez une communauté de plus de 46 000 abonnés sur Facebook, engagée autour du développement personnel, de la vie de couple et de la famille.</p>
+        <a href="#" class="btn btn-gold">Rejoindre la communauté</a>
+      </div>
+      <div class="social-cards">
+        <div class="soc-card"><div class="ic">f</div><div class="txt"><b>Facebook</b><span>46K+ abonnés</span></div></div>
+        <div class="soc-card"><div class="ic">◎</div><div class="txt"><b>Instagram</b><span>Coulisses &amp; conseils au quotidien</span></div></div>
+        <div class="soc-card"><div class="ic">✆</div><div class="txt"><b>WhatsApp</b><span>Échangez directement avec Marina</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SECTION 11: FINAL CTA ================= -->
+<section class="cta-final section-pad">
+  <div class="container">
+    <div class="phase-divider reveal" style="margin-bottom:32px;">
+      <i class="p1"></i><i class="p2"></i><i class="p3"></i><i class="p4"></i><i class="p5"></i>
+    </div>
+    <h2 class="reveal">Votre transformation peut commencer <span class="accent-gold">aujourd'hui.</span></h2>
+    <p class="reveal">Prenez un moment pour vous, votre couple, votre famille ou votre projet professionnel.</p>
+    <div class="ctas reveal">
+      <a href="#contact" class="btn btn-gold">Réserver une séance</a>
+      <a href="#" class="btn btn-ghost-light">Contacter sur WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section class="contact section-pad" id="contact">
+  <div class="container contact-grid">
+    <div class="contact-info reveal">
+      <div class="eyebrow">Contact</div>
+      <h2>Prenons rendez-vous.</h2>
+      <p>Décrivez votre situation et le type d'accompagnement que vous recherchez. Marina vous répondra personnellement.</p>
+      <div class="info-row"><div class="ic">◍</div><div class="t"><b>Localisation</b><span>Ouagadougou, Burkina Faso</span></div></div>
+      <div class="info-row"><div class="ic">✆</div><div class="t"><b>WhatsApp</b><span>Réponse rapide sur demande</span></div></div>
+      <div class="info-row"><div class="ic">f</div><div class="t"><b>Facebook</b><span>Coach Marina Minoungou — 46K+ abonnés</span></div></div>
+    </div>
+    <form onsubmit="event.preventDefault(); this.reset(); alert('Merci — votre demande a bien été envoyée.');">
+      <div class="form-row">
+        <div class="field"><label>Nom complet</label><input type="text" required placeholder="Votre nom"></div>
+        <div class="field"><label>Téléphone</label><input type="tel" required placeholder="+226 ..."></div>
+      </div>
+      <div class="form-row">
+        <div class="field"><label>Email</label><input type="email" required placeholder="vous@email.com"></div>
+        <div class="field">
+          <label>Type d'accompagnement</label>
+          <select required>
+            <option value="">Sélectionner</option>
+            <option>Développement personnel</option>
+            <option>Couple</option>
+            <option>Famille / parentalité</option>
+            <option>Entrepreneuriat</option>
+            <option>Autre</option>
+          </select>
+        </div>
+      </div>
+      <div class="field full" style="margin-bottom:24px;">
+        <label>Message</label>
+        <textarea placeholder="Parlez-moi de votre situation..."></textarea>
+      </div>
+      <div class="submit-row">
+        <button type="submit" class="btn btn-primary">Envoyer ma demande</button>
+        <a href="#" class="btn btn-outline">Contacter sur WhatsApp</a>
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#top" class="wordmark">MARINA <b>MINOUNGOU</b></a>
+        <p>Coach • Mentor • Entrepreneure — Ouagadougou, Burkina Faso.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Navigation</h5>
+        <a href="#about">À propos</a>
+        <a href="#expertise">Coaching</a>
+        <a href="#programmes">Programmes</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div class="footer-col">
+        <h5>Accompagnement</h5>
+        <a href="#expertise">Vie de couple</a>
+        <a href="#expertise">Famille &amp; éducation</a>
+        <a href="#expertise">Entrepreneuriat</a>
+      </div>
+      <div class="footer-col">
+        <h5>Suivez-moi</h5>
+        <a href="#">Facebook</a>
+        <a href="#">Instagram</a>
+        <a href="#">WhatsApp</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Marina Minoungou. Tous droits réservés.</span>
+      <div class="footer-social">
+        <a href="#">f</a>
+        <a href="#">◎</a>
+        <a href="#">✆</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<a href="#" class="wa-float" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24" fill="white"><path d="M12.04 2c-5.46 0-9.9 4.44-9.9 9.9 0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.9-4.44 9.9-9.9 0-2.64-1.03-5.13-2.9-7C17.17 3.03 14.68 2 12.04 2zm5.8 14.14c-.24.68-1.4 1.3-1.93 1.38-.5.08-1.13.11-1.82-.12-.42-.13-.96-.31-1.65-.6-2.9-1.25-4.8-4.16-4.94-4.35-.14-.19-1.18-1.57-1.18-3 0-1.42.75-2.12 1.02-2.41.27-.29.58-.36.78-.36.2 0 .39 0 .56.01.18.01.42-.07.66.5.24.58.81 2 .88 2.14.07.14.12.31.02.5-.09.19-.14.31-.28.48-.14.17-.29.37-.42.5-.14.14-.28.29-.12.57.16.28.71 1.17 1.53 1.9 1.05.94 1.94 1.23 2.22 1.37.28.14.44.12.61-.07.16-.19.68-.79.86-1.06.18-.27.36-.22.6-.13.24.09 1.53.72 1.8.85.27.13.44.19.51.3.07.11.07.62-.17 1.3z"/></svg>
+</a>
+
+<script>
+  // Sticky header
+  const header = document.getElementById('siteHeader');
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 40);
+  });
+
+  // Mobile menu
+  const burger = document.getElementById('burger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  burger.addEventListener('click', () => {
+    burger.classList.toggle('active');
+    mobileMenu.classList.toggle('open');
+  });
+  document.querySelectorAll('.mobile-menu a').forEach(a => {
+    a.addEventListener('click', () => {
+      burger.classList.remove('active');
+      mobileMenu.classList.remove('open');
+    });
+  });
+
+  // Reveal on scroll
+  const reveals = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting){
+        entry.target.classList.add('is-visible');
+        io.unobserve(entry.target);
+      }
+    });
+  }, {threshold:0.15});
+  reveals.forEach(el => io.observe(el));
+
+  // Animated counters (46K+)
+  const counters = document.querySelectorAll('[data-count]');
+  const cio = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting){
+        const el = entry.target;
+        const target = parseInt(el.dataset.count, 10);
+        let cur = 0;
+        const step = Math.max(1, Math.round(target/40));
+        const iv = setInterval(() => {
+          cur += step;
+          if (cur >= target){ cur = target; clearInterval(iv); }
+          el.textContent = cur + 'K+';
+        }, 30);
+        cio.unobserve(el);
+      }
+    });
+  }, {threshold:0.5});
+  counters.forEach(el => cio.observe(el));
+</script>
+
+</body>
+</html>
