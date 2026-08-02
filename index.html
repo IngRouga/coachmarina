@@ -1087,15 +1087,15 @@
       </div>
       <div class="hero-stats reveal">
         <div class="stat">
-          <span class="num">500+</span>
+          <span class="num counter" data-target="500" data-suffix="+">0+</span>
           <span class="label">Femmes formées</span>
         </div>
         <div class="stat">
-          <span class="num">200+</span>
+          <span class="num counter" data-target="200" data-suffix="+">0+</span>
           <span class="label">Couples accompagnés</span>
         </div>
         <div class="stat">
-          <span class="num">300+</span>
+          <span class="num counter" data-target="300" data-suffix="+">0+</span>
           <span class="label">Enfants éduqués</span>
         </div>
       </div>
@@ -1233,9 +1233,9 @@
 <!-- ================= SECTION 6: SOCIAL AUTHORITY ================= -->
 <section class="authority section-pad-sm">
   <div class="auth-grid">
-    <div class="auth-item reveal"><span class="big">500+</span><span class="lbl">Femmes formées</span></div>
-    <div class="auth-item reveal"><span class="big">200+</span><span class="lbl">Couples accompagnés</span></div>
-    <div class="auth-item reveal"><span class="big">300+</span><span class="lbl">Enfants éduqués</span></div>
+    <div class="auth-item reveal"><span class="big counter" data-target="500" data-suffix="+">0+</span><span class="lbl">Femmes formées</span></div>
+    <div class="auth-item reveal"><span class="big counter" data-target="200" data-suffix="+">0+</span><span class="lbl">Couples accompagnés</span></div>
+    <div class="auth-item reveal"><span class="big counter" data-target="300" data-suffix="+">0+</span><span class="lbl">Enfants éduqués</span></div>
   </div>
 </section>
 
@@ -1400,11 +1400,11 @@
         <div class="eyebrow on-dark">Réseaux sociaux</div>
         <h2>Suivez Coach Marina au quotidien.</h2>
         <p>Rejoignez une communauté de plus de 46 000 abonnés sur Facebook, engagée autour du développement personnel, de la vie de couple et de la famille.</p>
-        <a href="https://www.facebook.com/share/1BzH82jctH/" target="_blank" class="btn btn-gold">Rejoindre la communauté</a>
+        <a href="https://t.me/wNX8-BZ7S_QyYjQ0" target="_blank" class="btn btn-gold">Rejoindre la communauté</a>
       </div>
       <div class="social-cards">
+        <a class="soc-card" href="https://t.me/wNX8-BZ7S_QyYjQ0" target="_blank"><div class="ic">✈</div><div class="txt"><b>Telegram</b><span>Rejoindre le canal</span></div></a>
         <a class="soc-card" href="https://www.facebook.com/share/1BzH82jctH/" target="_blank"><div class="ic">f</div><div class="txt"><b>Facebook</b><span>46K+ abonnés</span></div></a>
-        <a class="soc-card" href="mailto:minoungoumarina@gmail.com"><div class="ic">✉</div><div class="txt"><b>Email</b><span>minoungoumarina@gmail.com</span></div></a>
         <a class="soc-card" href="https://wa.me/22605284419" target="_blank"><div class="ic">✆</div><div class="txt"><b>WhatsApp</b><span>+226 05 28 44 19</span></div></a>
       </div>
     </div>
@@ -1563,18 +1563,40 @@
   }, {threshold:0.15});
   reveals.forEach(el => io.observe(el));
 
-  // Subtle pulse reveal for stat numbers
-  const counters = document.querySelectorAll('.hero-stats .num, .auth-item .big');
+  // Professional animated counters (count-up with ease-out)
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function animateCounter(el){
+    const target = parseInt(el.dataset.target, 10);
+    const suffix = el.dataset.suffix || '';
+    if (prefersReducedMotion){
+      el.textContent = target + suffix;
+      return;
+    }
+    const duration = 1900;
+    const start = performance.now();
+    function tick(now){
+      const p = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - p, 3); // ease-out cubic
+      const value = Math.floor(eased * target);
+      el.textContent = value + suffix;
+      if (p < 1){
+        requestAnimationFrame(tick);
+      } else {
+        el.textContent = target + suffix;
+      }
+    }
+    requestAnimationFrame(tick);
+  }
+  const counters = document.querySelectorAll('.counter');
   const cio = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting){
-        entry.target.style.transform = 'scale(1.08)';
-        setTimeout(() => { entry.target.style.transform = 'scale(1)'; }, 260);
+        animateCounter(entry.target);
         cio.unobserve(entry.target);
       }
     });
   }, {threshold:0.5});
-  counters.forEach(el => { el.style.transition = 'transform .5s ' + 'cubic-bezier(.22,.61,.36,1)'; el.style.display='inline-block'; cio.observe(el); });
+  counters.forEach(el => cio.observe(el));
 </script>
 
 </body>
